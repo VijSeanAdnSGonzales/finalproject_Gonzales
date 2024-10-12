@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Butterfly Facts</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #90EE90; /* Light green background */
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Container for Layout */
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            grid-template-areas: 
+                "links title"
+                "links description";
+            width: 80%;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Title Styling */
+        .title {
+            grid-area: title;
+            text-align: center;
+        }
+
+        .title h1 {
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        /* Links Section (Images as Links) */
+        .links {
+            grid-area: links;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .links a {
+            margin-bottom: 20px;
+        }
+
+        .links img {
+            width: 200px;
+            height: 200px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Description Section */
+        .description {
+            grid-area: description;
+            text-align: center;
+        }
+
+        .description p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            color: #333;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Left side with images as links -->
+        <div class="links">
+            <a href="Facts.html" target="_blank">
+                <img src="C:\Users\VIJSEAN\Documents\images for css project\facts.jpg" alt="Link to Page 1">
+            </a>
+            <a href="Kinds of Butterflies.html" target="_blank">
+                <img src="C:\Users\VIJSEAN\Documents\images for css project\types.jpg" alt="Link to Page 2">
+            </a>
+        </div>
+
+        <!-- Title in the middle -->
+        <div class="title">
+            <h1>Butterfly Facts</h1>
+        </div>
+
+        <!-- Description under the title -->
+        <div class="description">
+            <p>Butterflies are colorful, delicate insects known for their beautiful wings and graceful flight. They play an important role as pollinators, helping plants reproduce while feeding on nectar. Their life cycle includes four stages: egg, caterpillar, pupa, and adult butterfly. In this website, I will show you facts and different kinds of butterflies</p>
+        </div>
+    </div>
+</body>
+</html>
