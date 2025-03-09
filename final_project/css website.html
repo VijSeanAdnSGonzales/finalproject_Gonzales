@@ -5,17 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Butterflies Paradise</title>
     <style>
-        /* General Reset */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        /* Body Styling */
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #90EE90; /* Light green background */
+            background-color: #90EE90;
             color: #333;
             display: flex;
             flex-direction: column;
@@ -50,7 +48,6 @@
             text-decoration: none;
         }
 
-        /* Main Content Layout */
         main {
             margin-top: 20px;
             display: flex;
@@ -64,7 +61,8 @@
             grid-template-columns: 1fr 2fr;
             grid-template-areas: 
                 "links title"
-                "links description";
+                "links description"
+                "links quiz";
             width: 100%;
             background-color: #fff;
             padding: 20px;
@@ -104,7 +102,7 @@
 
         .description {
             grid-area: description;
-            text-align: center;
+            text-align: justify;
         }
 
         .description p {
@@ -114,14 +112,15 @@
             margin-top: 5px;
         }
 
-        /* Sprite Sheet Animation */
         .butterfly {
-            width: 100px; /* Frame width */
-            height: 100px; /* Frame height */
-            background-image: url('Images/butterfly sheet.png'); /* Sprite sheet path */
-            background-size: 500% 100%; /* 5 frames horizontally */
+            width: 100px;
+            height: 100px;
+            background-image: url('Images/butterfly sheet.png');
+            background-size: 500% 100%;
             animation: fly 1s steps(5) infinite, move 5s ease-in-out infinite;
-            position: relative;
+            position: absolute;
+            top: 20px;
+            right: 20px;
         }
 
         @keyframes fly {
@@ -129,7 +128,7 @@
                 background-position: 0 0;
             }
             to {
-                background-position: -500% 0; /* Move through all frames */
+                background-position: -500% 0;
             }
         }
 
@@ -138,35 +137,26 @@
                 transform: translate(0, 0) rotate(0deg);
             }
             50% {
-                transform: translate(200px, -100px) rotate(20deg);
+                transform: translate(50px, -30px) rotate(20deg);
             }
             100% {
                 transform: translate(0, 0) rotate(0deg);
             }
         }
-
-        footer {
-            margin-top: 20px;
-            text-align: center;
-            color: #333;
-            font-size: 0.9em;
-        }
     </style>
 </head>
 <body>
-    <!-- Header Section -->
     <header>
         <h1>Welcome to Butterflies Paradise</h1>
         <nav>
             <ul>
-                <li><a href="Kinds of Butterflies.html">Home</a></li>
+                <li><a href="Kinds of Butterflies.html">Kinds of Butterflies</a></li>
                 <li><a href="Facts.html">Facts</a></li>
                 <li><a href="css website.html">Description</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Main Content Section -->
     <main>
         <article>
             <nav class="links">
@@ -181,16 +171,23 @@
                 <h1>Butterflies Paradise</h1>
             </section>
             <section class="description">
-                <p>Butterflies are colorful, delicate insects known for their beautiful wings and graceful flight. They play an important role as pollinators, helping plants reproduce while feeding on nectar. Their life cycle includes four stages: egg, caterpillar, pupa, and adult butterfly. In this website, I will show you facts and different kinds of butterflies.</p>
+                <p>Butterflies are colorful, delicate insects known for their beautiful wings and graceful flight. They play an important role as pollinators, helping plants reproduce while feeding on nectar. Their life cycle includes four stages: egg, caterpillar, pupa, and adult butterfly. In this website, I will show you facts and different kinds of butterflies, their habitats, and how to create a butterfly-friendly garden to help conserve these amazing creatures.</p>
+            </section>
+            
+            <section class="quiz">
+                <h2>Butterfly Quiz</h2>
+                <p>Test your knowledge about butterflies! Click the button below to start the quiz.</p>
+                <button onclick="startQuiz()">Start Quiz</button>
+                <div id="quiz-container"></div>
             </section>
         </article>
-        <!-- Butterfly Sprite Animation -->
         <div class="butterfly"></div>
     </main>
 
-    <!-- Footer Section -->
     <footer>
         <p>&copy; 2024 Butterflies Paradise. All rights reserved.</p>
     </footer>
+
+    <script src="quiz.js"></script>
 </body>
 </html>
