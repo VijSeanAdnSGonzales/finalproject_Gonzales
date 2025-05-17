@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +19,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            height: 100vh;
+            min-
         }
 
         header {
@@ -124,24 +125,27 @@
         }
 
         @keyframes fly {
-            from {
-                background-position: 0 0;
-            }
-            to {
-                background-position: -500% 0;
-            }
+            from { background-position: 0 0; }
+            to { background-position: -500% 0; }
         }
 
         @keyframes move {
-            0% {
-                transform: translate(0, 0) rotate(0deg);
-            }
-            50% {
-                transform: translate(50px, -30px) rotate(20deg);
-            }
-            100% {
-                transform: translate(0, 0) rotate(0deg);
-            }
+            0% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(50px, -30px) rotate(20deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
+        }
+
+        .error { color: red; font-size: 0.9em; margin-left: 5px; }
+        .hidden { display: none; }
+
+        .profile-card {
+            margin-top: 30px;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            display: inline-block;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            width: 60%;
         }
     </style>
 </head>
@@ -173,7 +177,6 @@
             <section class="description">
                 <p>Butterflies are colorful, delicate insects known for their beautiful wings and graceful flight. They play an important role as pollinators, helping plants reproduce while feeding on nectar. Their life cycle includes four stages: egg, caterpillar, pupa, and adult butterfly. In this website, I will show you facts and different kinds of butterflies, their habitats, and how to create a butterfly-friendly garden to help conserve these amazing creatures.</p>
             </section>
-            
             <section class="quiz">
                 <h2>Butterfly Quiz</h2>
                 <p>Test your knowledge about butterflies! Click the button below to start the quiz.</p>
@@ -182,12 +185,84 @@
             </section>
         </article>
         <div class="butterfly"></div>
+
+        <!-- Signup Section -->
+        <section style="margin-top: 40px; background-color: #fff; padding: 20px; border-radius: 10px; width: 80%;">
+            <header>
+                <h2 style="color: #228B22;">Support the Butterfly Conservation Campaign</h2>
+                <p style="font-style: italic;">"Fluttering towards a greener future!"</p>
+            </header>
+            <form id="signup-form">
+                <label>First Name* <input type="text" id="firstName" required></label><span class="error"></span><br><br>
+                <label>Last Name* <input type="text" id="lastName" required></label><span class="error"></span><br><br>
+                <label>Sex*:
+                    <input type="radio" name="sex" value="Male"> Male
+                    <input type="radio" name="sex" value="Female"> Female
+                    <input type="radio" name="sex" value="Prefer not to say"> Prefer not to say
+                </label><span class="error"></span><br><br>
+                <label>Email* <input type="email" id="email" required></label><span class="error"></span><br><br>
+                <label>Password* <input type="password" id="password" required></label><span class="error"></span><br><br>
+                <label>Contact Number <input type="text" id="contact"></label><br><br>
+                <label>Why you’re supporting our campaign*<br>
+                    <textarea id="whySupport" required></textarea>
+                </label><span class="error"></span><br><br>
+                <button type="submit">Join the Flight</button>
+            </form>
+        </section>
+
+        <!-- Profile Display Section -->
+        <div id="profile-display" class="profile-card hidden">
+            <h2>Your Butterfly Campaign Profile</h2>
+            <p><strong>First Name:</strong> <span id="profileFirstName"></span></p>
+            <p><strong>Last Name:</strong> <span id="profileLastName"></span></p>
+            <p><strong>Email:</strong> <span id="profileEmail"></span></p>
+            <p><strong>Sex:</strong> <span id="profileSex"></span></p>
+            <p><strong>Why You Support:</strong> <span id="profileWhy"></span></p>
+        </div>
     </main>
 
     <footer>
         <p>&copy; 2024 Butterflies Paradise. All rights reserved.</p>
     </footer>
 
-    <script src="quiz.js"></script>
+    <script>
+        function startQuiz() {
+            alert("Quiz function not yet implemented.");
+        }
+
+        document.getElementById("signup-form").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const errors = document.querySelectorAll(".error");
+            errors.forEach(err => err.textContent = "");
+
+            let valid = true;
+
+            const firstName = document.getElementById("firstName").value.trim();
+            const lastName = document.getElementById("lastName").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value.trim();
+            const contact = document.getElementById("contact").value.trim();
+            const why = document.getElementById("whySupport").value.trim();
+            const sex = document.querySelector('input[name="sex"]:checked');
+
+            if (!firstName) { document.querySelectorAll(".error")[0].textContent = " required"; valid = false; }
+            if (!lastName) { document.querySelectorAll(".error")[1].textContent = " required"; valid = false; }
+            if (!sex) { document.querySelectorAll(".error")[2].textContent = " required"; valid = false; }
+            if (!email) { document.querySelectorAll(".error")[3].textContent = " required"; valid = false; }
+            if (!password) { document.querySelectorAll(".error")[4].textContent = " required"; valid = false; }
+            if (!why) { document.querySelectorAll(".error")[5].textContent = " required"; valid = false; }
+
+            if (valid) {
+                document.getElementById("profileFirstName").textContent = firstName;
+                document.getElementById("profileLastName").textContent = lastName;
+                document.getElementById("profileEmail").textContent = email;
+                document.getElementById("profileSex").textContent = sex.value;
+                document.getElementById("profileWhy").textContent = why;
+
+                document.getElementById("profile-display").classList.remove("hidden");
+            }
+        });
+    </script>
 </body>
 </html>
